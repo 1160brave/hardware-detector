@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-sidebar-light: #ffffff;
+  --color-sidebar-dark: #0f172a;
+  --color-content-light: #f1f5f9;
+  --color-content-dark: #020617;
+  --color-card-light: #ffffff;
+  --color-card-dark: #1e293b;
+  --color-border-light: #e2e8f0;
+  --color-border-dark: #334155;
+}
+
+:root {
+  --sidebar-bg: var(--color-sidebar-light);
+  --content-bg: var(--color-content-light);
+  --card-bg: var(--color-card-light);
+  --border-color: var(--color-border-light);
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --accent-cpu: #3b82f6;
+  --accent-memory: #8b5cf6;
+  --accent-disk: #10b981;
+  --accent-network: #f59e0b;
+}
+
+.dark {
+  --sidebar-bg: var(--color-sidebar-dark);
+  --content-bg: var(--color-content-dark);
+  --card-bg: var(--color-card-dark);
+  --border-color: var(--color-border-dark);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --accent-cpu: #60a5fa;
+  --accent-memory: #a78bfa;
+  --accent-disk: #34d399;
+  --accent-network: #fbbf24;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+  background-color: var(--content-bg);
+  color: var(--text-primary);
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #64748b;
+}
+
+/* Recharts */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line,
+.recharts-cartesian-axis-line {
+  stroke: #e2e8f0 !important;
+}
+.dark .recharts-cartesian-grid-horizontal line,
+.dark .recharts-cartesian-grid-vertical line,
+.dark .recharts-cartesian-axis-line {
+  stroke: #334155 !important;
+}
+
+/* Remove default focus ring from Recharts SVG elements on click */
+.recharts-wrapper *:focus {
+  outline: none !important;
+}
